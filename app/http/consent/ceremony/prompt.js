@@ -5,6 +5,11 @@ exports = module.exports = function() {
   
   function prompt(req, res, next) {
     // TODO: Load this based on query param
+    res.locals.client = {
+      id: '1',
+      displayName: 'Example Client'
+    }
+    res.locals.scope = [ 'read', 'write' ];
     
     res.render('consent', function(err, str) {
       if (err && err.view) {
