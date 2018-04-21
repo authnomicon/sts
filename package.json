@@ -25,6 +25,7 @@
   "assembly": {
     "namespace": "org.authnomicon/authorize",
     "components": [
+      "http/consent/service",
       "http/consent/ceremony"
     ]
   },
