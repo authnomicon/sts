@@ -7,7 +7,8 @@
     "email": "jaredhanson@gmail.com",
     "url": "http://jaredhanson.net/"
   },
-  "repository": {    "type": "git",
+  "repository": {
+    "type": "git",
     "url": "git://github.com/authnomicon/authorize.git"
   },
   "bugs": {
@@ -24,7 +25,11 @@
   "assembly": {
     "namespace": "org.authnomicon/authorize",
     "components": [
+      "http/ceremony/consent"
     ]
+  },
+  "dependencies": {
+    "ejs": "^2.5.9"
   },
   "devDependencies": {
     "make-node": "^0.3.0",
