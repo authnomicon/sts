@@ -3,7 +3,7 @@
 var expect = require('chai').expect;
 
 
-describe('@authnomicon/authorize', function() {
+describe('@authnomicon/sts', function() {
   
   it('should throw if required', function() {
     expect(function() {
