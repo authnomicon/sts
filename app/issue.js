@@ -13,7 +13,7 @@ exports = module.exports = function(negotiateFormat, negotiateConfirmation, toke
     // FIXME:
     claims.audience = audience;
     
-    negotiateType(audience, presenter, function(err, topts) {
+    negotiateConfirmation(audience, presenter, function(err, topts) {
       if (err) { return cb(err); }
       
       
