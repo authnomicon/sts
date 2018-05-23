@@ -25,8 +25,8 @@ describe('issue', function() {
     describe('default behavior', function() {
       var token;
     
-      var negotiateFormatStub = sinon.stub().yields(null, 'jwt')
-        , negotiateTypeStub = sinon.stub().yields(null, 'bearer');
+      var negotiateFormatStub = sinon.stub().yields(null, { type: 'application/jwt' })
+        , negotiateConfirmationStub = sinon.stub().yields(null, 'none');
     
       before(function() {
         sinon.stub(tokens, 'encode').yields(null, '2YotnFZFEjr1zCsicMWpAA');
@@ -44,17 +44,17 @@ describe('issue', function() {
           },
           scope: [ 'beep', 'boop' ]
         };
-        var presenter = {
-          id: 's6BhdRkqt3',
-          name: 'Example Client'
-        };
         var audience = [
           { id: '112210f47de98100',
             identifier: 'https://api.example.com/',
             name: 'Example API' }
         ];
+        var presenter = {
+          id: 's6BhdRkqt3',
+          name: 'Example Client'
+        };
       
-        var negotiate = factory(negotiateFormatStub, negotiateTypeStub, tokens);
+        var negotiate = factory(negotiateFormatStub, negotiateConfirmationStub, tokens);
         negotiate(claims, audience, presenter, {}, function(err, t) {
           if (err) { return done(err); }
           token = t;
@@ -62,14 +62,14 @@ describe('issue', function() {
         });
       });
       
-      it('should negotiate token type', function() {
-        expect(negotiateTypeStub.callCount).to.equal(1);
-        expect(negotiateTypeStub.args[0][0]).to.deep.equal([
+      it('should negotiate token confirmation', function() {
+        expect(negotiateConfirmationStub.callCount).to.equal(1);
+        expect(negotiateConfirmationStub.args[0][0]).to.deep.equal([
           { id: '112210f47de98100',
             identifier: 'https://api.example.com/',
             name: 'Example API' }
         ]);
-        expect(negotiateTypeStub.args[0][1]).to.deep.equal({
+        expect(negotiateConfirmationStub.args[0][1]).to.deep.equal({
           id: 's6BhdRkqt3',
           name: 'Example Client'
         });
