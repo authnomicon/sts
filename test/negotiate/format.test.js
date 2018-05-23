@@ -34,13 +34,7 @@ describe('negotiate/format', function() {
       });
       
       it('should yield type', function() {
-        expect(type).to.deep.equal({
-      type: 'application/jwt',
-      dialect: 'urn:ietf:params:oauth:token-type:jwt',
-      signingAlgorithms: [
-        'rsa-sha256', 'hmac-sha256'
-      ]
-    });
+        expect(type).to.deep.equal({ type: 'application/jwt' });
       });
     });
     

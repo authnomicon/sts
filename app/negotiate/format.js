@@ -7,6 +7,9 @@ exports = module.exports = function() {
     console.log('NEGOTIATE TOKEN FORMAT!');
     console.log(peers);
     
+    //return cb(null, 'application/jwt');
+    
+    return cb(null, { type: 'application/jwt' });
     
     return cb(null, {
       type: 'application/jwt',

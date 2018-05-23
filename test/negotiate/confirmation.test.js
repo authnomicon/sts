@@ -41,7 +41,7 @@ describe('negotiate/confirmation', function() {
       });
     });
     
-    describe('negotiating mac token', function() {
+    describe('negotiating proof of possession', function() {
       var type;
       
       before(function(done) {
