@@ -1,7 +1,6 @@
 exports = module.exports = function() {
   
-  // aka, method of utilization
-  return function negotiateTokenType(resources, client, cb) {
+  return function negotiateConfirmation(resources, client, cb) {
     if (!Array.isArray(resources)) {
       resources = [ resources ];
     }
