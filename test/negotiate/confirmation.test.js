@@ -37,7 +37,7 @@ describe('negotiate/confirmation', function() {
       });
       
       it('should yield type', function() {
-        expect(type).to.equal('bearer');
+        expect(type).to.equal('none');
       });
     });
     
@@ -47,11 +47,11 @@ describe('negotiate/confirmation', function() {
       before(function(done) {
         var client = {
           id: 's6BhdRkqt3',
-          tokenUsagesSupported: [ 'mac' ]
+          confirmationMethodsSupported: [ 'key' ]
         }
         var resource = {
           id: '112210f47de98100',
-          tokenUsagesSupported: [ 'mac' ]
+          confirmationMethodsSupported: [ 'key' ]
         }
         
         
@@ -64,7 +64,7 @@ describe('negotiate/confirmation', function() {
       });
       
       it('should yield type', function() {
-        expect(type).to.equal('mac');
+        expect(type).to.equal('key');
       });
     });
     
