@@ -1,8 +1,8 @@
 exports = module.exports = function(negotiateFormat, negotiateConfirmation, tokens) {
   
-  return function issue(claims, audience, presenter, options, cb) {
+  return function issue(message, audience, presenter, options, cb) {
     console.log('ISSUE TOKEN!');
-    console.log(claims);
+    console.log(message);
     
     if (typeof options == 'function') {
       cb = options;
@@ -11,23 +11,29 @@ exports = module.exports = function(negotiateFormat, negotiateConfirmation, toke
     options = options || {};
     
     // FIXME:
-    claims.audience = audience;
+    message.audience = audience;
     
     negotiateConfirmation(audience, presenter, function(err, topts) {
       if (err) { return cb(err); }
       
       
-      negotiateFormat(claims.audience, function(err, copts) {
+      negotiateFormat(message.audience, function(err, copts) {
         if (err) { return cb(err); }
         
         copts.dialect = options.dialect || copts.dialect;
         copts.confidential = false;
-        copts.audience = claims.audience;
+        copts.audience = message.audience;
     
         //copts.type = 'http://schemas.modulate.io/tokens/jwt/twilio';
         //copts.dialect = 'http://schemas.modulate.io/tokens/jwt/twilio';
+        
+        // TODO: negotiate dialect
+        
+        var opts = {};
+        opts.schema = 'urn:ietf:params:oauth:token-type:jwt';
+        
     
-        tokens.encode('urn:ietf:params:oauth:token-type:jwt', claims, copts, function(err, token) {
+        tokens.encode(message, copts, opts, function(err, token) {
           if (err) { return cb(err); }
           return cb(null, token);
         });

@@ -86,8 +86,7 @@ describe('issue', function() {
       
       it('should encode token', function() {
         expect(tokens.encode.callCount).to.equal(1);
-        expect(tokens.encode.args[0][0]).to.equal('access');
-        expect(tokens.encode.args[0][1]).to.deep.equal({
+        expect(tokens.encode.args[0][0]).to.deep.equal({
           user: { id: '1', displayName: 'John Doe' },
           scope: [ 'beep', 'boop' ],
           audience: 
@@ -95,7 +94,7 @@ describe('issue', function() {
                  identifier: 'https://api.example.com/',
                  name: 'Example API' } ]
         });
-        expect(tokens.encode.args[0][2]).to.deep.equal({
+        expect(tokens.encode.args[0][1]).to.deep.equal({
 type: 'application/jwt',
   dialect: undefined,
   confidential: false,
@@ -103,6 +102,9 @@ type: 'application/jwt',
              [ { id: '112210f47de98100',
                  identifier: 'https://api.example.com/',
                  name: 'Example API' } ]
+        });
+        expect(tokens.encode.args[0][2]).to.deep.equal({
+          schema: 'urn:ietf:params:oauth:token-type:jwt'
         });
       });
     
