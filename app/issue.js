@@ -13,16 +13,16 @@ exports = module.exports = function(negotiateFormat, negotiateConfirmation, toke
     // FIXME:
     message.audience = recipients;
     
-    negotiateConfirmation(recipients, presenter, function(err, topts) {
+    negotiateConfirmation(recipients, presenter, function(err, confirm) {
       if (err) { return cb(err); }
       
       
-      negotiateFormat(recipients, function(err, copts) {
+      negotiateFormat(recipients, function(err, format) {
         if (err) { return cb(err); }
         
-        copts.dialect = options.dialect || copts.dialect;
-        copts.confidential = false;
-        copts.audience = message.audience;
+        //copts.dialect = options.dialect || copts.dialect;
+        //copts.confidential = false;
+        //copts.audience = message.audience;
     
         //copts.type = 'http://schemas.modulate.io/tokens/jwt/twilio';
         //copts.dialect = 'http://schemas.modulate.io/tokens/jwt/twilio';
@@ -31,6 +31,7 @@ exports = module.exports = function(negotiateFormat, negotiateConfirmation, toke
         
         var opts = {};
         opts.schema = 'urn:ietf:params:oauth:token-type:jwt';
+        opts.token = format;
         
     
         tokens.encode(message, recipients, opts, function(err, token) {

@@ -99,7 +99,10 @@ describe('issue', function() {
                  name: 'Example API' } ]
         );
         expect(tokens.encode.args[0][2]).to.deep.equal({
-          schema: 'urn:ietf:params:oauth:token-type:jwt'
+          schema: 'urn:ietf:params:oauth:token-type:jwt',
+          token: {
+            type: 'application/jwt'
+          }
         });
       });
     
