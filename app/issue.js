@@ -1,6 +1,6 @@
 exports = module.exports = function(negotiateFormat, negotiateConfirmation, tokens) {
   
-  return function issue(message, audience, presenter, options, cb) {
+  return function issue(message, recipients, presenter, options, cb) {
     console.log('ISSUE TOKEN!');
     console.log(message);
     
@@ -11,13 +11,13 @@ exports = module.exports = function(negotiateFormat, negotiateConfirmation, toke
     options = options || {};
     
     // FIXME:
-    message.audience = audience;
+    message.audience = recipients;
     
-    negotiateConfirmation(audience, presenter, function(err, topts) {
+    negotiateConfirmation(recipients, presenter, function(err, topts) {
       if (err) { return cb(err); }
       
       
-      negotiateFormat(message.audience, function(err, copts) {
+      negotiateFormat(recipients, function(err, copts) {
         if (err) { return cb(err); }
         
         copts.dialect = options.dialect || copts.dialect;

@@ -44,7 +44,7 @@ describe('issue', function() {
           },
           scope: [ 'beep', 'boop' ]
         };
-        var audience = [
+        var recipient = [
           { id: '112210f47de98100',
             identifier: 'https://api.example.com/',
             name: 'Example API' }
@@ -55,7 +55,7 @@ describe('issue', function() {
         };
       
         var negotiate = factory(negotiateFormatStub, negotiateConfirmationStub, tokens);
-        negotiate(claims, audience, presenter, {}, function(err, t) {
+        negotiate(claims, recipient, presenter, {}, function(err, t) {
           if (err) { return done(err); }
           token = t;
           done();
