@@ -27,7 +27,7 @@ exports = module.exports = function(negotiateFormat, negotiateConfirmation, toke
         //copts.type = 'http://schemas.modulate.io/tokens/jwt/twilio';
         //copts.dialect = 'http://schemas.modulate.io/tokens/jwt/twilio';
     
-        tokens.encode('access', claims, copts, function(err, token) {
+        tokens.encode('urn:ietf:params:oauth:token-type:jwt', claims, copts, function(err, token) {
           if (err) { return cb(err); }
           return cb(null, token);
         });
