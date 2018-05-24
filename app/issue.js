@@ -33,7 +33,7 @@ exports = module.exports = function(negotiateFormat, negotiateConfirmation, toke
         opts.schema = 'urn:ietf:params:oauth:token-type:jwt';
         
     
-        tokens.encode(message, copts, opts, function(err, token) {
+        tokens.encode(message, recipients, opts, function(err, token) {
           if (err) { return cb(err); }
           return cb(null, token);
         });

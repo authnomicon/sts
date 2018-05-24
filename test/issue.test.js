@@ -94,15 +94,10 @@ describe('issue', function() {
                  identifier: 'https://api.example.com/',
                  name: 'Example API' } ]
         });
-        expect(tokens.encode.args[0][1]).to.deep.equal({
-type: 'application/jwt',
-  dialect: undefined,
-  confidential: false,
-          audience: 
-             [ { id: '112210f47de98100',
+        expect(tokens.encode.args[0][1]).to.deep.equal([ { id: '112210f47de98100',
                  identifier: 'https://api.example.com/',
                  name: 'Example API' } ]
-        });
+        );
         expect(tokens.encode.args[0][2]).to.deep.equal({
           schema: 'urn:ietf:params:oauth:token-type:jwt'
         });
