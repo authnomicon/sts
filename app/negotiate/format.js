@@ -4,9 +4,6 @@ exports = module.exports = function() {
   // TODO: Rename this to confirmation? 
   
   return function negotiateTokenContent(peers, cb) {
-    console.log('NEGOTIATE TOKEN FORMAT!');
-    console.log(peers);
-    
     //return cb(null, 'application/jwt');
     
     return cb(null, { type: 'application/jwt' });

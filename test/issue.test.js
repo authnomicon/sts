@@ -84,31 +84,27 @@ describe('issue', function() {
         ]);
       });
       
-      /*
       it('should encode token', function() {
         expect(tokens.encode.callCount).to.equal(1);
         expect(tokens.encode.args[0][0]).to.equal('access');
         expect(tokens.encode.args[0][1]).to.deep.equal({
-          user: {
-            id: '1',
-            displayName: 'John Doe'
-          },
-          client: {
-            id: 's6BhdRkqt3',
-            name: 'Example Client'
-          },
-          permissions: [ {
-            resource: {
-              id: '112210f47de98100',
-              identifier: 'https://api.example.com/',
-              name: 'Example API'
-            },
-            scope: [ 'read:foo', 'write:foo', 'read:bar' ]
-          } ],
-          redirectURI: 'https://client.example.com/cb'
+          user: { id: '1', displayName: 'John Doe' },
+          scope: [ 'beep', 'boop' ],
+          audience: 
+             [ { id: '112210f47de98100',
+                 identifier: 'https://api.example.com/',
+                 name: 'Example API' } ]
+        });
+        expect(tokens.encode.args[0][2]).to.deep.equal({
+type: 'application/jwt',
+  dialect: undefined,
+  confidential: false,
+          audience: 
+             [ { id: '112210f47de98100',
+                 identifier: 'https://api.example.com/',
+                 name: 'Example API' } ]
         });
       });
-      */
     
       it('should yield token', function() {
         expect(token).to.equal('2YotnFZFEjr1zCsicMWpAA');
