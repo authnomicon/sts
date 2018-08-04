@@ -7,6 +7,9 @@ exports = module.exports = function() {
     //return cb(null, 'application/jwt');
     
     return cb(null, { type: 'application/jwt' });
+    //return cb(null, { type: 'application/fe26.2' });
+    //return cb(null, { type: 'application/x-fernet-json' });
+    
     
     return cb(null, {
       type: 'application/jwt',

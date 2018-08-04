@@ -32,7 +32,8 @@ exports = module.exports = function(negotiateFormat, negotiateConfirmation, toke
         var opts = {};
         opts.schema = 'urn:ietf:params:oauth:token-type:jwt';
         opts.token = format;
-        
+        // FIXME: confidential should be true by default (possibly negotiated)
+        opts.confidential = false;
     
         tokens.encode(message, recipients, opts, function(err, token) {
           if (err) { return cb(err); }
