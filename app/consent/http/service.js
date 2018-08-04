@@ -10,7 +10,7 @@ exports = module.exports = function(promptHandler, decisionHandler) {
 
 exports['@implements'] = [
   'http://i.bixbyjs.org/http/Service',
-  'http://schemas.authnomicon.org/js/http/authorize/ConsentService'
+  'http://schemas.authnomicon.org/js/sts/consent/HTTPService'
 ];
 exports['@path'] = '/consent';
 exports['@require'] = [
