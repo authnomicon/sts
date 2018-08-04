@@ -26,8 +26,8 @@
     "namespace": "org.authnomicon/sts",
     "components": [
       "main",
-      "http/consent/service",
-      "http/consent/ceremony"
+      "consent/http/service",
+      "consent/http/ceremony"
     ]
   },
   "dependencies": {
