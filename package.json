@@ -25,9 +25,7 @@
   "assembly": {
     "namespace": "org.authnomicon/sts",
     "components": [
-      "main",
-      "consent/http/service",
-      "consent/http/ceremony"
+      "main"
     ]
   },
   "dependencies": {
